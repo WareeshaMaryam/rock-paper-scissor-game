@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: rgb(175, 153, 231);
+        }
+
+        .container {
+            width: 50vw;
+            height: 80vh;
+            margin: auto;
+            margin-top: 50px;
+            border: 10px solid black;
+            border-radius: 100px;
+            padding: 10px;
+            background-color: rgba(144, 109, 224, 0.895);
+        }
+
+        .choices {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 50px;
+        }
+
+        img {
+            width: 150px;
+            height: 150px;
+            border: 10px solid black;
+            border-radius: 50%;
+            margin: 25px 0px;
+        }
+
+        button {
+            margin: 10px;
+            border: none;
+            background: none;
+            outline: none;
+            margin-left: 30px;
+
+        }
+
+        .result {
+            text-align: center;
+            font-size: 30px;
+            font-weight: bolder;
+        }
+
+        @media only screen and (max-width: 375px) {
+            h1 {
+                font-size: 1rem;
+            }
+
+            .container {
+                width: 70vw;
+                height: 80vh;
+                margin: auto;
+                margin-top: 3px;
+            }
+
+            img {
+                width: 80px;
+                height: 80px;
+            }
+
+            .choices {
+                display: inline;
+                margin-top: 0px;
+            }
+
+            button {
+                margin: 0px;
+                border: none;
+                margin-left: 3rem;
+                line-height: 0;
+
+                .result {
+                   font-size: 1px;
+                }
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="heading">
+            <h1>ROCK - PAPER - SCISSOR</h1>
+        </div>
+        <div clasplayerDisplays="choices">
+            <button onclick="playGame('rock')"><img src="./images/rock1.jpeg" alt=""></button>
+            <button onclick="playGame('paper')"><img src="./images/paper2.jpeg" alt=""></button>
+            <button onclick="playGame('scissor')"><img src="./images/scissor3.jpeg" alt=""></button>
+        </div>
+        <div class="result">
+            <div id="playerDisplay">Player :</div>
+            <div id="computerDisplay">Computer :</div>
+            <div id="resultDisplay">Result :</div>
+        </div>
+    </div>
+
+    <script>
+        const choices = ["rock", "paper", "scissor"]
+        const playerDisplay = document.getElementById("playerDisplay")
+        const computerDisplay = document.getElementById("computerDisplay")
+        const resultDisplay = document.getElementById("resultDisplay")
+
+        function playGame(playerChoice) {
+            const computerChoice = choices[Math.floor(Math.random() * 3)]
+            let result = "";
+
+            if (playerChoice === computerChoice) {
+                result = "IT'S A TIE!"
+            }
+            else if (computerChoice === "rock" && playerChoice === "paper" ||
+                computerChoice === "paper" && playerChoice === "scissor" ||
+                computerChoice === "scissor" && playerChoice === "rock") {
+                result = "YOU WON!"
+            }
+            else {
+                result = "YOU LOST!"
+            }
+
+
+            playerDisplay.textContent = `PLayer : ${playerChoice}`;
+            computerDisplay.textContent = `Computer : ${computerChoice}`;
+            resultDisplay.textContent = result;
+        }
+    </script>
+
+</body> 
+
+</html>
